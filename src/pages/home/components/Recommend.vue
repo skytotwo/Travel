@@ -2,7 +2,7 @@
   <div>
     <div class="title">热销推荐</div>
     <ul>
-      <li class="item border-bottom" v-for="item in recommendList" :key="item.id">
+      <li class="item border-bottom" v-for="item in list" :key="item.id">
         <img class="item-img" :src="item.imgUrl"/>
         <div class="item-info">
           <p class="item-title">{{item.title}}</p>
@@ -17,33 +17,35 @@
 <script>
 export default {
   name: "HomeRecommend",
-  data () {
-    return {
-      recommendList: [{
-        id: '0001',
-        imgUrl: 'http://img1.qunarzz.com/sight/p0/1603/3b/3bd311262ee06d8c90.img.jpg_200x200_c118d7da.jpg',
-        title: '广州长隆旅游度假区',
-        desc: '酷爽夏日消暑乐园，享受您的美好时光'
-      }, {
-        id: '0002',
-        imgUrl: 'http://img1.qunarzz.com/sight/p0/1603/3b/3bd311262ee06d8c90.img.jpg_200x200_c118d7da.jpg',
-        title: '广州长隆旅游度假区',
-        desc: '酷爽夏日消暑乐园，享受您的美好时光'
-      }, {
-        id: '0003',
-        imgUrl: 'http://img1.qunarzz.com/sight/p0/1603/3b/3bd311262ee06d8c90.img.jpg_200x200_c118d7da.jpg',
-        title: '广州长隆旅游度假区',
-        desc: '酷爽夏日消暑乐园，享受您的美好时光'
-      }]
-    }
+  props: {
+    list: Array  // 获取到父组件传递的值
   }
+  // data () {
+  //   return {
+  //     recommendList: [{
+  //       id: '0001',
+  //       imgUrl: 'http://img1.qunarzz.com/sight/p0/1603/3b/3bd311262ee06d8c90.img.jpg_200x200_c118d7da.jpg',
+  //       title: '广州长隆旅游度假区',
+  //       desc: '酷爽夏日消暑乐园，享受您的美好时光'
+  //     }, {
+  //       id: '0002',
+  //       imgUrl: 'http://img1.qunarzz.com/sight/p0/1603/3b/3bd311262ee06d8c90.img.jpg_200x200_c118d7da.jpg',
+  //       title: '广州长隆旅游度假区',
+  //       desc: '酷爽夏日消暑乐园，享受您的美好时光'
+  //     }, {
+  //       id: '0003',
+  //       imgUrl: 'http://img1.qunarzz.com/sight/p0/1603/3b/3bd311262ee06d8c90.img.jpg_200x200_c118d7da.jpg',
+  //       title: '广州长隆旅游度假区',
+  //       desc: '酷爽夏日消暑乐园，享受您的美好时光'
+  //     }]
+  //   }
+  // }
 }
 </script>
 
 <style lang="stylus" scoped>
   @import '~styles/mixins.styl'
   .title  //栏目标题样式
-    margin-top: .2rem
     line-height: .8rem
     background: #eee
     text-indent: .2rem
