@@ -50,10 +50,6 @@ export default {
         id: "0008",
         imgUrl: "http://img1.qunarzz.com/piao/fusion/1804/5a/13ceb38dcf262f02.png",
         desc: "一日游"
-      },{ 
-        id: "0009",
-        imgUrl: "http://img1.qunarzz.com/piao/fusion/1803/b1/528a9e80403b8c02.png",
-        desc: "玩转长隆"
       }]
     }
   },
@@ -79,33 +75,35 @@ export default {
   .icons >>> .swiper-container
     height: 0
     padding-bottom: 50%
-  .icon  /*单个图标样式*/
-    position: relative
-    overflow: hidden
-    float: left
-    width: 25%
-    height: 0
-    padding-bottom: 25%
-    .icon-img  /*图标图片样式*/
-      position: absolute
-      top: 0
-      left: 0
-      right: 0 
-      bottom: .44rem
-      box-sizing: border-box
-      padding: .1rem
-      .icon-img-content
-        display: block
-        margin: 0 auto
-        height: 100%
-    .icon-desc  /*图标文字样式*/
-      position: absolute
-      left: 0
-      right: 0 
-      bottom: 0
-      height: .44rem
-      line-height: .44rem
-      text-align: center
-      color: $darkTextColor
-      ellipsis()
+  .icons
+    margin-top: .1rem
+    .icon  /*单个图标样式*/
+      position: relative
+      overflow: hidden
+      float: left
+      width: 25%
+      height: 0
+      padding-bottom: 25%
+      .icon-img  /*图标图片样式*/
+        position: absolute
+        top: 0
+        left: 0
+        right: 0 
+        bottom: .44rem
+        box-sizing: border-box
+        padding: .1rem
+        .icon-img-content
+          display: block
+          margin: 0 auto
+          height: 100%
+      .icon-desc  /*图标文字样式*/
+        position: absolute
+        left: 0
+        right: 0 
+        bottom: 0
+        height: .44rem
+        line-height: .44rem
+        text-align: center
+        color: $darkTextColor
+        ellipsis()
 </style>
