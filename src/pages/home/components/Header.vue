@@ -21,19 +21,19 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-	@import '~styles/varibles.styl';
-	.header
+	@import '~styles/varibles.styl'; /*引入全局样式*/
+	.header /*header部分样式*/
 		display: flex
 		line-height: .86rem
 		background: $bgColor
 		color:#fff
-		.header-left
+		.header-left /*左侧返回样式*/
 			width: .64rem
 			float: left
 			.back-icon
 				text-align: center
 				font-size: .4rem
-		.header-input
+		.header-input /*输入框样式*/
 			flex: 1
 			height: .64rem
 			line-height: .64rem
@@ -43,7 +43,7 @@ export default {
 			background: #fff
 			border-radius: .1rem
 			color: #ccc
-		.header-right
+		.header-right /*右侧城市样式*/
 			width: 1.24rem
 			float: right
 			text-align: center
