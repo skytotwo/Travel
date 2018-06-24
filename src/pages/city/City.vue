@@ -8,10 +8,10 @@
 </template>
 
 <script>
-import CityHeader from './components/Header'
-import CitySearch from './components/Search'
-import CityList from './components/List'
-import CityAlphabet from './components/Alphabet'
+import CityHeader from './components/Header'  // header栏目
+import CitySearch from './components/Search'  // 搜索框
+import CityList from './components/List'  // 城市列表
+import CityAlphabet from './components/Alphabet'  // 右边字母列
 export default {
   name: 'City',
   components: {
