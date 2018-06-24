@@ -19,7 +19,7 @@
           </div>
         </div>
       </div>
-      <div class="area" v-for="(item, key) in cities" :key="key"> <!--循环对象，第二个参数就是key-->
+      <div class="area" v-for="(item, key) in cities" :key="key" :ref="key"> <!--循环对象，第二个参数就是key-->
         <div class="title border-topbottom">{{key}}</div>
         <div class="item-list">
           <div class="item border-bottom"  v-for="innerItem in item" :key="innerItem.id">
@@ -40,7 +40,16 @@ export default {
   },
   props: {
     cities: Object,
-    hot: Array 
+    hot: Array,
+    letter: String
+  },
+  watch: { // 监听器
+    letter() {  // 监听字母组件--父组件传递过来的值，有变化就触发
+      if (this.letter) {
+        const element = this.$refs[this.letter][0]  // 取出传入的字母的所在循环节点区域，[0]取出一个dom元素
+        this.scroll.scrollToElement(element)  // 将该dom元素传入scroll定义的方法里，显示该字母城市区域
+      }
+    }
   }
 }
 </script>
