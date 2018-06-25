@@ -9,7 +9,7 @@
 		</div>
 		<router-link to='/city'> <!--点击跳转到city-->
 			<div class="header-right">
-				{{this.city}}
+				{{this.city}}  <!--直接使用计算属性-->
 				<span class="iconfont arrow-icon">&#xe64a;</span>
 			</div>
 		</router-link>
@@ -17,10 +17,11 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
 	name: 'HomeHeader',
-	props: {
-		city: String
+	computed: {
+		...mapState(['city'])  // 展开mapState，这是一个vuex的api，意思是将vuex中的city，映射到名为city的计算属性中
 	}
 }
 </script>
@@ -49,7 +50,8 @@ export default {
 			border-radius: .1rem
 			color: #ccc
 		.header-right /*右侧城市样式*/
-			width: 1.24rem
+			min-width: 1.04rem
+			padding: 0 .1rem
 			float: right
 			text-align: center
 			color: #fff

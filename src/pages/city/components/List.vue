@@ -7,14 +7,17 @@
         <div class="title border-topbottom">当前城市</div>
         <div class="button-list">
           <div class="button-wrapper">
-            <div class="button">北京</div>
+            <div class="button">{{this.city}}</div>
           </div>
         </div>
       </div>
       <div class="area">
         <div class="title border-topbottom">热门城市</div>
         <div class="button-list">
-          <div class="button-wrapper" v-for="item in hot" :key="item.id">
+          <div class="button-wrapper" 
+            v-for="item in hot" 
+            :key="item.id" 
+            @click="handleCityClick(item.name)">
             <div class="button">{{item.name}}</div>
           </div>
         </div>
@@ -22,7 +25,10 @@
       <div class="area" v-for="(item, key) in cities" :key="key" :ref="key"> <!--循环对象，第二个参数就是key-->
         <div class="title border-topbottom">{{key}}</div>
         <div class="item-list">
-          <div class="item border-bottom"  v-for="innerItem in item" :key="innerItem.id">
+          <div class="item border-bottom"  
+            v-for="innerItem in item" 
+            :key="innerItem.id"
+            @click="handleCityClick(innerItem.name)">
             {{innerItem.name}}
           </div>
         </div>
@@ -33,6 +39,7 @@
 
 <script>
 import Bscroll from 'better-scroll'
+import { mapState, mapMutations } from 'vuex'
 export default {
   name: 'CityList',
   mounted () {  // 页面加载完dom
@@ -43,6 +50,14 @@ export default {
     hot: Array,
     letter: String
   },
+  methods: {
+    handleCityClick (city) {
+      //this.$store.commit('changeCity', city)  // 调用注册的vuex仓库store的mutations方法，改变城市值
+      this.changeCity(city)
+      this.$router.push('/')  // 每个组件都自带router方法，用$调用，push进地址即可跳转
+    },
+    ...mapMutations(['changeCity']) // mapMutations，该api意思是，将Mutations的changeCity方法映射到本地的一个名为changeCity的方法上
+  },
   watch: { // 监听器
     letter() {  // 监听字母组件--父组件传递过来的值，有变化就触发
       if (this.letter) {
@@ -50,7 +65,10 @@ export default {
         this.scroll.scrollToElement(element)  // 将该dom元素传入scroll定义的方法里，显示该字母城市区域
       }
     }
-  }
+  },
+  computed: {
+		...mapState(['city'])  // 展开mapState，这是一个vuex的api，意思是将vuex中的city，映射到名为city的计算属性中
+	}
 }
 </script>
 

@@ -13,6 +13,7 @@
           class="search-item border-bottom"
           v-for="item of list"
           :key="item.id"
+          @click="handleCityClick(item.name)"
         >
           {{item.name}}
         </li>
@@ -26,6 +27,7 @@
 
 <script>
 import Bscroll from 'better-scroll'
+import { mapMutations } from 'vuex'
 export default {
   name: 'CitySearch',
   props: {
@@ -64,6 +66,14 @@ export default {
         this.list = result
       }, 100)
     }
+  },
+  methods: {
+    handleCityClick (city) {
+      //this.$store.commit('changeCity', city)  // 调用注册的vuex仓库store的mutations方法，改变城市值
+      this.changeCity(city)
+      this.$router.push('/')  // 每个组件都自带router方法，用$调用，push进地址即可跳转
+    },
+    ...mapMutations(['changeCity']) // mapMutations，该api意思是，将Mutations的changeCity方法映射到本地的一个名为changeCity的方法上
   },
   mounted () {  // 页面数据绑定加载后
     this.scroll = new Bscroll(this.$refs.search)  // 给搜索出的城市加上滚动效果
