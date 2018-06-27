@@ -27,7 +27,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-	@import '~styles/varibles.styl'; /*引入全局样式*/
+	@import '~styles/varibles.styl'; /*引入全局样式*/  /*使用其他自定义的缩写符号前，需要加上波浪线~*/
 	.header /*header部分样式*/
 		display: flex
 		line-height: $headerHeight
