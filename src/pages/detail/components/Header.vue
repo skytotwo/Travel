@@ -45,10 +45,10 @@ export default {
     }
   },
   activated () {  // 因为页面是keepalive的，这里表示页面显示
-    window.addEventListener('scroll', this.handleScroll)  // 增加事件监听，调用方法
+    window.addEventListener('scroll', this.handleScroll)  // 绑定全局事件，调用方法
   },
   deactivated () {  // 因为页面是keepalive的，这里表示页面隐藏
-    window.removeEventListener('scroll', this.handleScroll)  // 移除时间监听，调用方法
+    window.removeEventListener('scroll', this.handleScroll)  // 对全局事件进行解绑（很重要），调用方法
   }
 }
 </script>
