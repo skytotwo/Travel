@@ -1,17 +1,25 @@
+<!--实现header下拉渐隐渐现的效果-->
 <template>
-  <Detail-Banner></Detail-Banner>
+  <div>
+    <Detail-Banner></Detail-Banner>
+    <Detail-Header></Detail-Header>
+    <div class="content"></div>
+  </div>
 </template>
 
 <script>
 import DetailBanner from './components/Banner'
+import DetailHeader from './components/Header'
 export default {
   name: 'Detail',
   components: {
-    DetailBanner
+    DetailBanner,
+    DetailHeader
   }
 }
 </script>
 
 <style lang="stylus" scoped>
-  
+  .content
+    height: 50rem
 </style>
