@@ -1,0 +1,45 @@
+<template>
+  <div>
+    <div
+      class="item"
+      v-for="(item, index) of list"
+      :key="index"
+    >
+      <div class="item-title border-bottom">
+        <span class="item-title-icon"></span>
+        {{item.title}}
+      </div>
+      <div v-if="item.children" class="item-chilren">  <!--如果有子级别，则使用递归-->
+        <detail-list :list="item.children"></detail-list>  <!--递归调用组件（自己）-->
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'DetailList',
+  props: {
+    list: Array
+  }
+}
+</script>
+
+<style lang="stylus" scoped>
+  .item-title-icon  // 图标样式
+    position: relative
+    left: .06rem
+    top: .06rem
+    display: inline-block
+    width: .36rem
+    height: .36rem
+    background: url(http://s.qunarzz.com/piao/image/touch/sight/detail.png) 0 -.45rem no-repeat
+    margin-right: .1rem
+    background-size: .4rem 3rem
+  .item-title  // 标题样式
+    line-height: .8rem
+    font-size: .32rem
+    padding: 0 .2rem
+  .item-chilren  // 子标题样式
+    padding: 0 .2rem
+</style>

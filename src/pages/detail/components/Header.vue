@@ -69,6 +69,7 @@ export default {
       color: #fff
       font-size: .4rem
   .header-fixed  // header的样式
+    z-index: 2
     position: fixed
     top: 0
     left: 0
