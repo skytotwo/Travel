@@ -6,10 +6,10 @@
       :key="item"
       :ref="item"
       @click="handleLetterClick"
-      @touchstart="handleTouchStart"
+      @touchstart.prevent="handleTouchStart"
       @touchmove="handleTouchMove"
       @touchend="handleTouchEnd"
-    >  <!--循环对象，第二个参数就是key-->
+    >  <!--循环对象，第二个参数就是key;prevent代表阻止默认行为，真机上滚动字母就不会拉动屏幕-->
         {{item}}
       </li>
     </ul>
