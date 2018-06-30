@@ -1,10 +1,14 @@
 <!--实现header下拉渐隐渐现的效果-->
 <template>
   <div>
-    <Detail-Banner></Detail-Banner>
-    <Detail-Header></Detail-Header>
+    <detail-banner
+      :sightName="sightName"
+      :bannerImg="bannerImg"
+      :bannerImgs="gallaryImgs"
+    ></detail-banner>
+    <detail-header></detail-header>
     <div class="content">
-      <Detail-List :list="list"></Detail-List>
+      <detail-list :list="list"></detail-list>
     </div>
   </div>
 </template>
@@ -13,6 +17,7 @@
 import DetailBanner from './components/Banner'
 import DetailHeader from './components/Header'
 import DetailList from './components/List'
+import axios from 'axios'
 export default {
   name: 'Detail',
   components: {
@@ -22,24 +27,35 @@ export default {
   },
   data () {
     return {
-      list: [{
-        title: '成人票',
-        children: [{
-          title: '成人三馆联票',
-          children: [{
-            title: '成人三馆联票 - 某一连锁店销售',
-          }]
-        },{
-          title: '成人五馆联票'
-        }]
-      }, {
-        title: '学生票'
-      }, {
-        title: '儿童票'
-      }, {
-        title: '特惠票'
-      }]
+      sightName: '',
+      sightName: '',
+      bannerImg: '',
+      gallaryImgs: [],
+      list: []
     }
+  },
+  methods: {
+    getDetailInfo () {
+      // axios.get('/api/detail.json?id=' + this.$route.params.id)  // id在访问的时候就已经存在了路由的id里
+      axios.get('/api/detail.json', {
+        params: {
+          id: this.$route.params.id  // 和上面的意思一样
+        }
+      }).then(this.handleGetDataSucc) // 调用回调函数取回数据
+    },
+    handleGetDataSucc (res) {
+      res = res.data
+      if (res.ret && res.data) {
+        const data = res.data
+        this.sightName = data.sightName
+        this.bannerImg = data.bannerImg
+        this.gallaryImgs = data.gallaryImgs
+        this.list = data.categoryList
+      }
+    }
+  },
+  mounted() {
+    this.getDetailInfo()
   }
 }
 </script>
