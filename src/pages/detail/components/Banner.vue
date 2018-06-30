@@ -12,12 +12,15 @@
         </div>
       </div>
     </div>
-    <common-gallary :imgs="bannerImgs" v-show="showGallary" @close="handleGallaryClose"></common-gallary>  <!--使用画廊组件并且将数据传递过去-->
+    <fade-animation>  <!--定义动画组件，将轮播组件插入-->
+      <common-gallary :imgs="bannerImgs" v-show="showGallary" @close="handleGallaryClose"></common-gallary>  <!--使用画廊组件并且将数据传递过去-->
+    </fade-animation>
   </div>
 </template>
 
 <script>
 import CommonGallary from 'common/gallary/Gallary'  // 引入共用图片画廊组件
+import FadeAnimation from 'common/fade/FadeAnimation'  // 引入自定义的动画效果
 export default {
   name: 'DetailBanner',
   props: {
@@ -39,7 +42,8 @@ export default {
     }
   },
   components: {
-    CommonGallary
+    CommonGallary,
+    FadeAnimation
   }
 }
 </script>
